@@ -9,6 +9,8 @@
 
       $(document).ready(function(){
         var $body = $('body');
+
+        setInterval(function(){
         $body.html('');
 
         var index = streams.home.length - 1;
@@ -18,8 +20,7 @@
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
-        }
-
+        }}, 500);
       });
 
     </script>
