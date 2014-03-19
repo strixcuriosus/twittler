@@ -1,0 +1,17 @@
+body {
+    background-color: #F0F0FF;
+}
+div {
+    /*background-color: #F0F0FF; /*light*/
+    margin: 0 2px;
+    font-size: 1.3em;
+    border: 3px solid rgba(150, 150, 255, 0.9);
+    border-style: outset;
+    border-radius: 10px;
+    padding: 15px;
+    background-image: linear-gradient(to bottom, ##569ee6, #2874d8); /* #ABCFF3 #569ee6*/
+}
+
+div:nth-child(odd) {
+    background-color: rgba(177, 173, 174, 0.15); /*dark */
+}
