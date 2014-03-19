@@ -35,6 +35,9 @@
             e.preventDefault();
             currentUser = $(this).text().slice(1);
           });
+          $(".home").click(function(){
+            currentUser = "home";
+          });
         }}, 500);
       });
 

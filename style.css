@@ -30,3 +30,7 @@ div:nth-child(odd) {
     margin-left: auto;
     margin-right: auto;
 }
+
+.home:hover {
+    cursor: pointer;
+};
