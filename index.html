@@ -7,28 +7,34 @@
   </head>
   <body>
     <script>
+      var currentUser = "home";
+
       function pad(num){
-        if (num < 10){
-          num = '0' + num;
-        }
+        if (num < 10) { num = '0' + num; }
         return '' + num;
       };
 
       $(document).ready(function(){
         var $body = $('body');
+        var $home = $('<button class="home"> Twittler </button>');
 
         setInterval(function(){
         $body.html('');
+        $body.append($home);
 
-        var index = streams.home.length - 1;
+        var index = (streams["users"][currentUser] || streams.home)["length"] - 1;
         while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var tweet = (streams["users"][currentUser] || streams.home )[index];
+          var $tweet = $('<div class="tweets"></div>');
           var hours = pad(tweet.created_at.getHours());
           var min = pad(tweet.created_at.getMinutes())
           $tweet.html("" + hours + ":" + min + ' ' + '<span class="'+ tweet.user + '">' + '<a href="./' + tweet.user + '.html">' + '@' + tweet.user + '</a></span>' + ': ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
+          $("a").click(function(e){
+            e.preventDefault();
+            currentUser = $(this).text().slice(1);
+          });
         }}, 500);
       });
 
