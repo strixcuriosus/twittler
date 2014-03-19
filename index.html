@@ -3,9 +3,16 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
     <script>
+      function pad(num){
+        if (num < 10){
+          num = '0' + num;
+        }
+        return '' + num;
+      };
 
       $(document).ready(function(){
         var $body = $('body');
@@ -17,7 +24,9 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var hours = pad(tweet.created_at.getHours());
+          var min = pad(tweet.created_at.getMinutes())
+          $tweet.html("" + hours + ":" + min + ' ' + '<a href="//' + tweet.user + '">' + '@' + tweet.user + '</a>' + ': ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }}, 500);
